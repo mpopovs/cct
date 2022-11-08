@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import Modal from "react-native-modal";
-
+import Modal from 'react-native-modal';
 
 import {
   SafeAreaView,
@@ -17,7 +16,6 @@ import {
 export default function App() {
   const [input, setInput] = useState('');
   const [data, setData] = useState([]);
-  
 
   useEffect(() => {
     const url = `https://api.sketchfab.com/v3/search?type=models&q=${input}&user=sferagallery&archives_flavours=false`;
@@ -38,9 +36,8 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <View>
         <Text style={styles.header}> Contemporary Ceramic Library</Text>
-        
       </View>
-      
+
       <TextInput
         style={styles.input}
         placeholder="Search"
@@ -57,15 +54,15 @@ export default function App() {
                 style={styles.image}
                 source={{ uri: item.thumbnails.images[1].url }}
               />
-              <Button title="Show more" onPress={toggleModal}  />
+              <Button title="Show more" onPress={toggleModal} />
 
-<Modal isVisible={isModalVisible}>
-  <View style={{ flex: 1 }}>
-    <Text>{item.name}</Text>
+              <Modal isVisible={isModalVisible}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.text}>{item.name}</Text>
 
-    <Button title="Hide modal" onPress={toggleModal} />
-  </View>
-</Modal>
+                  <Button title="Hide modal" onPress={toggleModal} />
+                </View>
+              </Modal>
             </View>
           </View>
         )}
@@ -78,7 +75,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    
     flex: 1,
     backgroundColor: '#2471A3',
     alignItems: 'center',
@@ -100,5 +96,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     backgroundColor: '#e8e8e8',
+  },
+  text: {
+    backgroundColor: '#fff',
+    color: 'black',
   },
 });
